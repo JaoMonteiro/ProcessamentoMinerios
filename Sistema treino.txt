@@ -1,34 +1,67 @@
-Tecnologias:
-Python
-BD em Postgress
-FastAPI
-Docker
+Projeto de sistema de processamento de minérios 
+ - Treino Análise de dados 
 
 
-Definir os requisitos
-Definir Arquitetura
-Definir módulos do sistema
-Diagrama UML? 
+Orientador: Marcelo Pio 
 
 
-Sistema para acompanhar o processamento de minérios
-Deve ser possível:
-Cadastrar minérios (com quantidade, pureza, peso, densidade, etc)
-Métodos que processam esses minérios
-Transformar esses minérios em algum produto
-Vender produto ou minério bruto
+1 DEFINIÇÃO DO SISTEMA 
+
+O sistema desenvolvido será um sistema de gestão de processamento de minérios. Será possível realizar operações básicas como cadastro de minérios, métodos que simulam o processamento deles,  transformação desses minérios processados em produtos e possivelmente vendas. 
+
+O sistema será construído majoritariamente em Python com o uso da FastAPI, a base de dados será em PostgreSql e futuramente utilizaremos Docker para simular acesso remoto ao sistema. 
+
+
+2 REQUISITOS
+
+
+RF01 – Cadastro / edição de minério 
+É possível adicionar um novo minério ou alterar as informações de um já existente 
+
+RF02 – Visualizar informações dos minérios e sub-produtos 
+É possível escolher um minério ou sub-produto para visualizar suas informações 
+
+RF03 – Visualizar contagem e valor dos minérios 
+É possível verificar informações gerais do estoque, como total de minérios, valor total do estoque 
+
+RF04 – Processar minérios 
+É possível processar TODOS os minérios que entram, gerando sub-produtos ou alterando pureza do próprio minério 
+
+RF05 - Geração de produtos 
+É possível transformar minérios em produtos a serem vendidos 
+
+RF06 – Realizar vendas 
+É possível remover o estoque de minérios, registrando o que foi vendido e quando 
+
+RF07 – Visualizar venda 
+É possível visualizar as informações de uma venda separadamente 
+
+
+3 ARQUITETURA
+
+A arquitetura utilizada será de duas camadas, uma vez que não há necessidade de inteerface gráfica. 
+
+ 
+
+Módulos do Sistema: 
+Entrada de materiais 
+	Cadastro de minério 
+	Entrada de minério 
+	Edição de informações 
+Estoque 
+	Visualizar estoque individualmente 
+	Visualizar valores totais  
+	Descarte de material 
+Processar minérios e subprodutos 
+	Métodos individuais para processar X minério e gerar Y produtos 
+	Gerar novo método 
+Vender minérios / produtos 
+	Realizar venda 
+	Visualizar vendas 
+	Visualizar resumo de vendas 
 
 
 
-Sistema ERP Supermercado
-Deve ser possível:
-Cadastrar produtos (nome,validade,marca,categoria, preço de custo e preço de venda, etc)
-Cadastrar clientes
-Métodos para realizar compra
-Realizar inventário (total e por categoria)
-
-
-
-Servidor:
+Comando para rodar o sistema:
 python -m uvicorn main:app --reload
 
