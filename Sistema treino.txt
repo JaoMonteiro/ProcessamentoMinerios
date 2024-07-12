@@ -1,0 +1,34 @@
+Tecnologias:
+Python
+BD em Postgress
+FastAPI
+Docker
+
+
+Definir os requisitos
+Definir Arquitetura
+Definir módulos do sistema
+Diagrama UML? 
+
+
+Sistema para acompanhar o processamento de minérios
+Deve ser possível:
+Cadastrar minérios (com quantidade, pureza, peso, densidade, etc)
+Métodos que processam esses minérios
+Transformar esses minérios em algum produto
+Vender produto ou minério bruto
+
+
+
+Sistema ERP Supermercado
+Deve ser possível:
+Cadastrar produtos (nome,validade,marca,categoria, preço de custo e preço de venda, etc)
+Cadastrar clientes
+Métodos para realizar compra
+Realizar inventário (total e por categoria)
+
+
+
+Servidor:
+python -m uvicorn main:app --reload
+
