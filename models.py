@@ -1,6 +1,4 @@
 from sqlalchemy import Double, Column, ForeignKey, Integer, String,DateTime
-from sqlalchemy.dialects.postgresql import ARRAY
-from sqlalchemy.orm import relationship
 
 from database import Base
 
@@ -25,7 +23,6 @@ class Materials(Base):
     composition = Column(Integer, ForeignKey("ores.id"),nullable=False)
     class Config:
         orm_mode = True
-
 
 class Sales(Base):
     __tablename__ = "sales"

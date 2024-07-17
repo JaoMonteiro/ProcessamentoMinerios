@@ -1,13 +1,13 @@
-from sqlalchemy.orm import Session
-import datetime
-from sqlalchemy import delete
 from fastapi import HTTPException
+from sqlalchemy.orm import Session
+from sqlalchemy import delete
+import datetime, random, string
 import models, schemas
 from models import Sales
-import random,string
 
 
 def gerarAleatorios():
+    # Gera 3 numeros entre 10 e 150, um numero entre 0 e 1, e uma string aleatória.
     numeros = [random.randint(10, 150) for _ in range(2)]
     numero_entre_0_e_1 = random.random()
     caracteres = string.digits  # Usa apenas os dígitos de 0 a 9
@@ -19,6 +19,7 @@ def gerarAleatorios():
 def getOres(db: Session):
     db.flush
     return db.query(models.Ores).all()
+
 
 def getOreByID(db: Session, oreID: int):
     if(db.query(models.Ores).where(models.Ores.id == oreID).first()):
@@ -37,6 +38,7 @@ def createOre(db: Session, newOre: schemas.OreCreate):
         db.commit()
         db.refresh(dbOre)
         return dbOre
+
 
 def createAThousandOres(db: Session):
     
@@ -80,6 +82,7 @@ def addOre(db:Session, oreID:int,quantity:int):
     db.commit()
     return {"message":"Ore successfully updated."}
 
+
 # MATERIALS
 
 def getMaterials(db: Session):
@@ -122,6 +125,7 @@ def updateMaterial(db: Session,newMaterial:schemas.Material):
     db.commit()
     
     return {"message":"Material successfully updated."}
+
 
 def makeMaterial(db:Session,oreID:int, quantity:int,materialID:int):
 
@@ -214,9 +218,9 @@ def updateProduct(db: Session,newProduct:schemas.Product):
     product.quantity = newProduct.quantity
     product.price = newProduct.price
     db.commit()
-
     
     return {"message":"Product successfully updated."}
+
 
 def makeProduct(db:Session, quantity:float, productID:int):
     

@@ -1,8 +1,7 @@
 from fastapi import Depends, FastAPI, HTTPException
-from sqlalchemy.orm import Session
-
-import crud,models,schemas
 from database import SessionLocal, engine
+from sqlalchemy.orm import Session
+import crud,models,schemas
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -16,9 +15,10 @@ def get_db():
     finally:
         db.close()
 
-#@app.get("/")
-#async def root():
-#    return {"message": "Boa tarde senhores"}
+
+@app.get("/")
+async def root():
+    return {"message": "Go to /docs to see functionalities"}
 
 # ORES
 
@@ -145,4 +145,3 @@ def updateProduct(product: schemas.Product, db: Session = Depends(get_db)):
 @app.put("/products/create/{productID}/{quantity}")
 def makeProduct(productID:int, quantity:float, db: Session = Depends(get_db)):
     return crud.makeProduct(db=db, quantity=quantity,productID=productID)
-
